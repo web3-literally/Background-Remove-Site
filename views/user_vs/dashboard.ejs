@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../partials/head.ejs %>
+
+<body data-sa-theme="4">
+<% include ../partials/header.ejs %>
+<% include ../partials/sidebar.ejs %>
+
+<section class="content">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>Welcome <%=user.username%>!</h1>
+        </header>
+
+        <div class="row price-table price-table--highlight">
+            <div class="col-md-4">
+                <div class="price-table__item">
+                    <header class="price-table__header">
+                        <div class="price-table__title"><h3>Allocation Credits</h3></div>
+                    </header>
+                    <div class="price-table__price">
+                        <%=user.monthly_token%> Credits |
+                        <small>month</small>
+                    </div>
+                    <ul class="price-table__info">
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="price-table__item price-table__item--popular">
+                    <header class="price-table__header">
+                        <div class="price-table__title"><h3>Processed Images</h3></div>
+                    </header>
+                    <div class="price-table__price">
+                        <%=user.processed_count%> Images |
+                        <small>so far</small>
+                    </div>
+                    <ul class="price-table__info">
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="price-table__item">
+                    <header class="price-table__header">
+                        <div class="price-table__title"><h3>Remain Credits</h3></div>
+                    </header>
+                    <div class="price-table__price">
+                        <%=user.remain_token%> Credits |
+                        <small>total</small>
+                    </div>
+                    <ul class="price-table__info">
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <% if (activities && activities.length > 0) {%>
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 style="color: greenyellow;">Recent Activities</h1>
+                <% for (let i = 0; i < activities.length; i++) {%>
+                <hr>
+                <h4>
+                    <%=activities[i].history_date.getMonth()%>/<%=activities[i].history_date.getDay()%>/<%=activities[i].history_date.getFullYear()%>
+                    <%=activities[i].history_date.getHours()%>:<%=activities[i].history_date.getMinutes()%>:<%=activities[i].history_date.getSeconds()%>
+                </h4>
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <a href="<%=activities[i].origin_url%>" download="<%=activities[i].origin_url%>">
+                            <img class="w-100" src="<%=activities[i].origin_url%>">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <a href="<%=activities[i].background_url%>" download="<%=activities[i].background_url%>">
+                            <img class="w-100" src="<%=activities[i].background_url%>">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <a href="<%=activities[i].result_url%>" download="<%=activities[i].result_url%>">
+                            <img class="w-100" src="<%=activities[i].result_url%>">
+                        </a>
+                    </div>
+                </div>
+                <% }%>
+            </div>
+        </div>
+        <%}%>
+    </div>
+</section>
+
+<% include ../partials/footer.ejs %>
+<% include ../partials/foot.ejs %>
+
+</body>
+</html>
