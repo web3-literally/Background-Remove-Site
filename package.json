@@ -22,7 +22,7 @@
     "country-telephone-data": "^0.6.0",
     "crypto": "^1.0.1",
     "ejs": "^2.6.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.16.2",
     "flag-icon-css": "^3.3.0",
     "formidable": "^1.2.1",
